@@ -12,10 +12,7 @@ public class AblyRecord implements Record<String> {
 
     private final String key;
     private final String value;
-
     private final Map<String, String> properties;
-
-    // TODO Add key, properties fields to populate
 
     public AblyRecord(Message msg, String key) {
         this.key = key;

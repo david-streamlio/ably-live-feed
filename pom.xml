@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.streamnative.data.feeds.realtime</groupId>
-    <artifactId>AblyLiveFeed</artifactId>
+    <artifactId>ably-live-feed</artifactId>
     <version>1.0.0</version>
 
     <properties>
@@ -99,6 +99,16 @@
                     </images>
                     <registry>${docker.repo}</registry>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>docker:build</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

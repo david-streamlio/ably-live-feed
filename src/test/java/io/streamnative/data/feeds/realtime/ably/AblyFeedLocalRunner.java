@@ -13,9 +13,9 @@ public class AblyFeedLocalRunner {
     private static final Map<String, Object> SECRETS = new HashMap<>();
 
     static {
-        CONFIGS.put("CHANNEL_NAME", "[product:ably-coindesk/crypto-pricing]xrp:usd");
-        CONFIGS.put("MESSAGE_KEY", "xrp:usd");
-        SECRETS.put("API_KEY", "<YOUR API KEY>");
+        CONFIGS.put(AblySource.CHANNEL_NAME_PROPERTY, "[product:ably-coindesk/crypto-pricing]xrp:usd");
+        CONFIGS.put(AblySource.MESSAGE_KEY_PROPERTY, "xrp:usd");
+        SECRETS.put(AblySource.API_KEY_PROPERTY, "<YOUR API KEY>");
     }
 
     public static void main(String[] args) throws Exception {

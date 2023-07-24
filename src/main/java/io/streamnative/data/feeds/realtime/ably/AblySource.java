@@ -13,6 +13,11 @@ import java.util.Map;
 
 public class AblySource extends PushSource<String> {
 
+    public static final String API_KEY_PROPERTY = "apiKey";
+    public static final String CHANNEL_NAME_PROPERTY = "channelName";
+
+    public static final String MESSAGE_KEY_PROPERTY = "messageKey";
+
     private static final Logger LOG = LoggerFactory.getLogger(AblySource.class);
 
     private AblyRealtime ablyRealtime;
@@ -23,10 +28,15 @@ public class AblySource extends PushSource<String> {
 
     @Override
     public void open(Map<String, Object> config, SourceContext srcCtx) throws Exception {
-        ablyRealtime = new AblyRealtime(srcCtx.getSourceConfig().getSecrets().get("API_KEY").toString());
+        ablyRealtime = new AblyRealtime(srcCtx.getSourceConfig()
+                .getSecrets().get(API_KEY_PROPERTY).toString());
+
         ablyRealtime.connect();
-        channel = ablyRealtime.channels.get(srcCtx.getSourceConfig().getConfigs().get("CHANNEL_NAME").toString());
-        msgKey = srcCtx.getSourceConfig().getConfigs().get("MESSAGE_KEY").toString();
+
+        channel = ablyRealtime.channels.get(srcCtx.getSourceConfig()
+                .getConfigs().get(CHANNEL_NAME_PROPERTY).toString());
+
+        msgKey = srcCtx.getSourceConfig().getConfigs().get(MESSAGE_KEY_PROPERTY).toString();
         readMessages(this);
     }
 
